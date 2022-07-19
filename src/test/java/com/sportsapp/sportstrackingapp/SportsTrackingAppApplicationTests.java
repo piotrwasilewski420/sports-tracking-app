@@ -1,10 +1,10 @@
-package com.sportsapp.apiservice;
+package com.sportsapp.sportstrackingapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiServiceApplicationTests {
+class SportsTrackingAppApplicationTests {
 
 	@Test
 	void contextLoads() {

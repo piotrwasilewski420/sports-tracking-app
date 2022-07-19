@@ -1,13 +1,13 @@
-package com.sportsapp.apiservice;
+package com.sportsapp.sportstrackingapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiServiceApplication {
+public class SportsTrackingAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiServiceApplication.class, args);
+		SpringApplication.run(SportsTrackingAppApplication.class, args);
 	}
 
 }
