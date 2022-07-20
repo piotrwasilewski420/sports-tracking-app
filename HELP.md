@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.sportsapp.sports-tracking-app' is invalid and this project uses 'com.sportsapp.sportstrackingapp' instead.
+* The original package name 'com.example.sports-tracking-app' is invalid and this project uses 'com.example.sportstrackingapp' instead.
 
 # Getting Started
 
