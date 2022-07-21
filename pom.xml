@@ -8,8 +8,8 @@
 		<version>3.0.0-M3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>sports-tracking-app</artifactId>
+	<groupId>com.sportsapp</groupId>
+	<artifactId>sportstrackingapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>sports-tracking-app</name>
 	<description>Sports Tracking App</description>

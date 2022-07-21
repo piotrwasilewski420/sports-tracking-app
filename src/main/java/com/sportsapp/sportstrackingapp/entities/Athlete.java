@@ -1,4 +1,4 @@
-package com.example.sportstrackingapp.entities;
+package com.sportsapp.sportstrackingapp.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

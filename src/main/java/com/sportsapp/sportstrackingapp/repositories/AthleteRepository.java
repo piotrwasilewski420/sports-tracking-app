@@ -1,6 +1,6 @@
-package com.example.sportstrackingapp.repositories;
+package com.sportsapp.sportstrackingapp.repositories;
 
-import com.example.sportstrackingapp.entities.Athlete;
+import com.sportsapp.sportstrackingapp.entities.Athlete;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

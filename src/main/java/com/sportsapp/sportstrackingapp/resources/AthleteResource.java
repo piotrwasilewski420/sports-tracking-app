@@ -1,7 +1,7 @@
-package com.example.sportstrackingapp.resources;
+package com.sportsapp.sportstrackingapp.resources;
 
-import com.example.sportstrackingapp.entities.Athlete;
-import com.example.sportstrackingapp.repositories.AthleteRepository;
+import com.sportsapp.sportstrackingapp.entities.Athlete;
+import com.sportsapp.sportstrackingapp.repositories.AthleteRepository;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
