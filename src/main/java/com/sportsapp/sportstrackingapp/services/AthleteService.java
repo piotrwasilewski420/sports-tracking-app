@@ -5,6 +5,7 @@ import com.sportsapp.sportstrackingapp.repositories.AthleteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class AthleteService {
@@ -20,5 +21,9 @@ public class AthleteService {
 
     public Collection<Athlete> getAthletes() {
         return athleteRepository.findAll();
+    }
+
+    public Optional<Athlete> getAthlete(Long id) {
+        return athleteRepository.findById(id);
     }
 }

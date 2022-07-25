@@ -1,5 +1,6 @@
 package com.sportsapp.sportstrackingapp.controllers;
 
+import com.sportsapp.sportstrackingapp.exceptions.AthleteNotFoundException;
 import com.sportsapp.sportstrackingapp.models.Athlete;
 import com.sportsapp.sportstrackingapp.services.AthleteService;
 import jakarta.validation.Valid;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 public class AthleteController {
@@ -28,5 +30,15 @@ public class AthleteController {
     @GetMapping("/athletes")
     public Collection<Athlete> retrieveAllAthletes() {
         return athleteService.getAthletes();
+    }
+
+    @GetMapping("/athlete/{id}")
+    public Athlete retrieveAthlete(Long id) throws AthleteNotFoundException {
+        Optional<Athlete> athleteOptional = athleteService.getAthlete(id);
+
+        if (athleteOptional.isEmpty())
+            throw new AthleteNotFoundException(id);
+
+        return athleteOptional.get();
     }
 }

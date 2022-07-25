@@ -10,9 +10,7 @@ import lombok.Setter;
 
 import java.util.Collection;
 
-@Getter
-@Setter
-@Entity
+@Getter @Setter @Entity
 public class Club {
     @Id
     @GeneratedValue

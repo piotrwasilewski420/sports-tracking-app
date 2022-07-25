@@ -7,9 +7,7 @@ import lombok.Setter;
 
 import java.util.Collection;
 
-@Getter
-@Setter
-@Entity
+@Getter @Setter @Entity
 @Table(name = "ACTIVITY")
 public class Activity {
     @Id
