@@ -5,6 +5,7 @@ import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Range;
 
 import java.util.Collection;
 
@@ -30,8 +31,7 @@ public class Athlete {
     @Email(message = "Incorrect email format.")
     private String email;
 
-    @Min(value = 13, message = "Must be older than 13.")
-    @Max(value = 130, message = "Value of age field must be less than 130.")
+    @Range(min = 13, max = 130, message = "Age must be between 13 and 130")
     private Integer age;
 
     private String sex;

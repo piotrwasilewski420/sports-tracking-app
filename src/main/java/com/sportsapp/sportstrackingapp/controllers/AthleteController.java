@@ -22,7 +22,7 @@ public class AthleteController {
     @PostMapping("/athletes")
     public ResponseEntity<Object> addAthlete(@Valid @RequestBody Athlete athlete) {
         athleteService.addAthlete(athlete);
-        return ResponseEntity.ok("Athlete is valid.");
+        return ResponseEntity.ok("Athlete added.");
     }
 
     @GetMapping("/athletes")
