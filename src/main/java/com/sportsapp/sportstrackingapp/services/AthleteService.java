@@ -8,7 +8,7 @@ import java.util.Collection;
 
 @Service
 public class AthleteService {
-    AthleteRepository athleteRepository;
+    private final AthleteRepository athleteRepository;
 
     public AthleteService(AthleteRepository athleteRepository) {
         this.athleteRepository = athleteRepository;

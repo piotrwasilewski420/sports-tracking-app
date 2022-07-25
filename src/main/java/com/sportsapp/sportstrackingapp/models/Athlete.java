@@ -1,14 +1,14 @@
 package com.sportsapp.sportstrackingapp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter @Entity
+import java.util.Collection;
+
+@Getter @Setter @Entity @RequiredArgsConstructor
 public class Athlete {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,4 +39,11 @@ public class Athlete {
     private Double weight;
 
     private Double height;
+
+    @OneToMany
+    @JoinColumn(name = "athlete_id")
+    private Collection<Activity> activities;
+
+    @ManyToMany
+    private Collection<Club> clubs;
 }
