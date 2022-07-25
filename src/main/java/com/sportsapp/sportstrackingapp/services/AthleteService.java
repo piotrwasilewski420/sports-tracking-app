@@ -21,14 +21,4 @@ public class AthleteService {
     public Collection<Athlete> getAthletes() {
         return athleteRepository.findAll();
     }
-
-//    public void updateAthlete(String id, Athlete athlete) {
-//        athleteRepository.remove(id);
-//        athlete.setId(id);
-//        athleteRepository.put(id, athlete);
-//    }
-
-//    public void deleteAthlete(String id) {
-//        athleteRepository.remove(id);
-//    }
 }
