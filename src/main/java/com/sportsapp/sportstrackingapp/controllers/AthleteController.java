@@ -5,13 +5,9 @@ import com.sportsapp.sportstrackingapp.models.Athlete;
 import com.sportsapp.sportstrackingapp.services.AthleteService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @RestController
 public class AthleteController {
@@ -24,7 +20,7 @@ public class AthleteController {
     @PostMapping("/athletes")
     public ResponseEntity<Object> addAthlete(@Valid @RequestBody Athlete athlete) {
         athleteService.addAthlete(athlete);
-        return ResponseEntity.ok("Athlete added.");
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/athletes")
@@ -33,7 +29,7 @@ public class AthleteController {
     }
 
     @GetMapping("/athlete/{id}")
-    public Athlete retrieveAthlete(Long id) throws AthleteNotFoundException {
+    public Athlete retrieveAthlete(@PathVariable Long id) throws AthleteNotFoundException {
         return athleteService.getAthlete(id);
     }
 }

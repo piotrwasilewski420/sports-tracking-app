@@ -22,7 +22,7 @@ public class ActivityController {
     @PostMapping("/activities")
     public ResponseEntity<Object> addActivity(@Valid @RequestBody Activity activity) {
         activityService.addActivity(activity);
-        return ResponseEntity.ok("Activity added.");
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/activities")

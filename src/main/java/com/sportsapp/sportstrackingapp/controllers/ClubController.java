@@ -21,7 +21,7 @@ public class ClubController {
     @PostMapping("/clubs")
     public ResponseEntity<Object> addClub(@Valid @RequestBody Club club) {
         clubService.addClub(club);
-        return ResponseEntity.ok("Club added.");
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/clubs")
