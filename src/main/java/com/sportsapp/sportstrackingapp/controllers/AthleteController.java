@@ -34,11 +34,6 @@ public class AthleteController {
 
     @GetMapping("/athlete/{id}")
     public Athlete retrieveAthlete(Long id) throws AthleteNotFoundException {
-        Optional<Athlete> athleteOptional = athleteService.getAthlete(id);
-
-        if (athleteOptional.isEmpty())
-            throw new AthleteNotFoundException(id);
-
-        return athleteOptional.get();
+        return athleteService.getAthlete(id);
     }
 }

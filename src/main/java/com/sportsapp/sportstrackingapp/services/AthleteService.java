@@ -1,11 +1,11 @@
 package com.sportsapp.sportstrackingapp.services;
 
+import com.sportsapp.sportstrackingapp.exceptions.AthleteNotFoundException;
 import com.sportsapp.sportstrackingapp.models.Athlete;
 import com.sportsapp.sportstrackingapp.repositories.AthleteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @Service
 public class AthleteService {
@@ -23,7 +23,7 @@ public class AthleteService {
         return athleteRepository.findAll();
     }
 
-    public Optional<Athlete> getAthlete(Long id) {
-        return athleteRepository.findById(id);
+    public Athlete getAthlete(Long id) throws AthleteNotFoundException {
+        return athleteRepository.findById(id).orElseThrow(() -> new AthleteNotFoundException(id));
     }
 }
