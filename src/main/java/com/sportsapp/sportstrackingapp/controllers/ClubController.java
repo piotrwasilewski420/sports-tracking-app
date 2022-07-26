@@ -29,7 +29,7 @@ public class ClubController {
         return clubService.getClubs();
     }
 
-    @PutMapping("/athletes/{id}/clubs/{id}")
+    @PutMapping("/athletes/{athleteId}/clubs/{clubId}")
     public ResponseEntity<Object> addMember (
             @PathVariable Long clubId,
             @PathVariable Long athleteId) throws ClubNotFoundException, AthleteNotFoundException {
