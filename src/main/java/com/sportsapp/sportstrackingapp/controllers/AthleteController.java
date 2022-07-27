@@ -1,6 +1,7 @@
 package com.sportsapp.sportstrackingapp.controllers;
 
 import com.sportsapp.sportstrackingapp.exceptions.AthleteNotFoundException;
+import com.sportsapp.sportstrackingapp.exceptions.ClubNotFoundException;
 import com.sportsapp.sportstrackingapp.models.Athlete;
 import com.sportsapp.sportstrackingapp.services.AthleteService;
 import jakarta.validation.Valid;
@@ -28,8 +29,16 @@ public class AthleteController {
         return athleteService.getAthletes();
     }
 
-    @GetMapping("/athlete/{id}")
+    @GetMapping("/athletes/{id}")
     public Athlete retrieveAthlete(@PathVariable Long id) throws AthleteNotFoundException {
         return athleteService.getAthlete(id);
+    }
+
+    @PostMapping("/athletes/{athleteId}/clubs/{clubId}")
+    public ResponseEntity<Object> joinClub (
+            @PathVariable Long athleteId,
+            @PathVariable Long clubId) throws AthleteNotFoundException, ClubNotFoundException {
+        athleteService.joinClub(athleteId, clubId);
+        return ResponseEntity.ok().build();
     }
 }

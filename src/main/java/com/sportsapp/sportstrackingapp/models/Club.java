@@ -1,14 +1,12 @@
 package com.sportsapp.sportstrackingapp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter @Setter @Entity
 public class Club {
@@ -19,6 +17,11 @@ public class Club {
     @NotBlank(message = "Club must have a name.")
     private String name;
 
-    @ManyToMany
-    private Collection<Athlete> members;
+    @ManyToMany(mappedBy = "clubs")
+//    @JsonIgnore
+    private List<Athlete> members = new ArrayList<>();
+
+//    public void addMember(Athlete athlete) {
+//        members.add(athlete);
+//    }
 }

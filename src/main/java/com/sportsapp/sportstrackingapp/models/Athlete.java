@@ -7,7 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Range;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter @Setter @Entity @RequiredArgsConstructor
 public class Athlete {
@@ -41,9 +42,18 @@ public class Athlete {
     private Double height;
 
     @OneToMany
-    @JoinColumn(name = "athlete_id")
-    private Collection<Activity> activities;
+    @JoinColumn(name = "ATHLETE_ID")
+    private List<Activity> activities = new ArrayList<>();
 
     @ManyToMany
-    private Collection<Club> clubs;
+    @JoinTable(
+            name = "MEMBERSHIP",
+            joinColumns = @JoinColumn(name = "ATHLETE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CLUB_ID")
+    )
+    private List<Club> clubs = new ArrayList<>();
+
+    public void addClub(Club club) {
+        clubs.add(club);
+    }
 }
