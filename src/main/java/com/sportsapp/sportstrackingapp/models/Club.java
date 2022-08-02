@@ -17,11 +17,6 @@ public class Club {
     @NotBlank(message = "Club must have a name.")
     private String name;
 
-    @ManyToMany(mappedBy = "clubs")
-//    @JsonIgnore
+    @ManyToMany(mappedBy = "clubs", fetch = FetchType.LAZY)
     private List<Athlete> members = new ArrayList<>();
-
-//    public void addMember(Athlete athlete) {
-//        members.add(athlete);
-//    }
 }

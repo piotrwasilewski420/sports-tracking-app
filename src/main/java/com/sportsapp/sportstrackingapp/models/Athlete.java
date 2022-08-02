@@ -45,7 +45,7 @@ public class Athlete {
     @JoinColumn(name = "ATHLETE_ID")
     private List<Activity> activities = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "MEMBERSHIP",
             joinColumns = @JoinColumn(name = "ATHLETE_ID"),

@@ -1,5 +1,6 @@
 package com.sportsapp.sportstrackingapp.controllers;
 
+import com.sportsapp.sportstrackingapp.dtos.AthleteDTO;
 import com.sportsapp.sportstrackingapp.exceptions.AthleteNotFoundException;
 import com.sportsapp.sportstrackingapp.exceptions.ClubNotFoundException;
 import com.sportsapp.sportstrackingapp.models.Athlete;
@@ -25,12 +26,12 @@ public class AthleteController {
     }
 
     @GetMapping("/athletes")
-    public Collection<Athlete> retrieveAllAthletes() {
+    public Collection<AthleteDTO> retrieveAllAthletes() {
         return athleteService.getAthletes();
     }
 
     @GetMapping("/athletes/{id}")
-    public Athlete retrieveAthlete(@PathVariable Long id) throws AthleteNotFoundException {
+    public AthleteDTO retrieveAthlete(@PathVariable Long id) throws AthleteNotFoundException {
         return athleteService.getAthlete(id);
     }
 
