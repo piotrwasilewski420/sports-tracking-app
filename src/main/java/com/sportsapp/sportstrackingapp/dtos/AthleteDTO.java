@@ -6,9 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import java.util.ArrayList;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Getter @Setter @RequiredArgsConstructor
 public class AthleteDTO {
     private Long id;
     private String login;

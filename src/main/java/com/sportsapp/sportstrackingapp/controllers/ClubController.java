@@ -1,5 +1,6 @@
 package com.sportsapp.sportstrackingapp.controllers;
 
+import com.sportsapp.sportstrackingapp.dtos.ClubDTO;
 import com.sportsapp.sportstrackingapp.exceptions.ClubNotFoundException;
 import com.sportsapp.sportstrackingapp.models.Club;
 import com.sportsapp.sportstrackingapp.services.ClubService;
@@ -24,20 +25,12 @@ public class ClubController {
     }
 
     @GetMapping("/clubs")
-    public Collection<Club> retrieveAllClubs() {
+    public Collection<ClubDTO> retrieveAllClubs() {
         return clubService.getClubs();
     }
 
     @GetMapping("/clubs/{id}")
-    public Club retrieveClub(@PathVariable Long id) throws ClubNotFoundException {
+    public ClubDTO retrieveClub(@PathVariable Long id) throws ClubNotFoundException {
         return clubService.getClub(id);
     }
-
-//    @PostMapping("/athletes/{athleteId}/clubs/{clubId}")
-//    public ResponseEntity<Object> addMember (
-//            @PathVariable Long athleteId,
-//            @PathVariable Long clubId) throws AthleteNotFoundException, ClubNotFoundException {
-//        clubService.addMember(athleteId, clubId);
-//        return ResponseEntity.ok().build();
-//    }
 }

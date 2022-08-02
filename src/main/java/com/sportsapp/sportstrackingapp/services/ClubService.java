@@ -1,36 +1,44 @@
 package com.sportsapp.sportstrackingapp.services;
 
+import com.sportsapp.sportstrackingapp.dtos.ClubDTO;
 import com.sportsapp.sportstrackingapp.exceptions.ClubNotFoundException;
+import com.sportsapp.sportstrackingapp.mappers.ClubMapper;
 import com.sportsapp.sportstrackingapp.models.Club;
 import com.sportsapp.sportstrackingapp.repositories.ClubRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class ClubService {
     private final ClubRepository clubRepository;
 
-    public ClubService(ClubRepository clubRepository) {
+    private final ClubMapper clubMapper;
+
+    public ClubService(ClubRepository clubRepository, ClubMapper clubMapper) {
         this.clubRepository = clubRepository;
+        this.clubMapper = clubMapper;
     }
 
     public void addClub(Club club) {
         clubRepository.save(club);
     }
 
-    public Collection<Club> getClubs() {
-        return clubRepository.findAll();
+    public Collection<ClubDTO> getClubs() {
+        Collection<Club> clubs = clubRepository.findAll();
+
+        List<ClubDTO> clubsDTO = new ArrayList<>();
+        for (Club club : clubs ) {
+            clubsDTO.add(clubMapper.INSTANCE.clubToClubDTO(club));
+        }
+
+        return clubsDTO;
     }
 
-    public Club getClub(Long id) throws ClubNotFoundException {
-        return clubRepository.findById(id).orElseThrow(() -> new ClubNotFoundException(id));
+    public ClubDTO getClub(Long id) throws ClubNotFoundException {
+        Club club = clubRepository.findById(id).orElseThrow(() -> new ClubNotFoundException(id));
+        return clubMapper.INSTANCE.clubToClubDTO(club);
     }
-
-//    public Club addMember(@PathVariable Long athleteId, @PathVariable Long clubId) throws ClubNotFoundException, AthleteNotFoundException {
-//        Club club = clubRepository.findById(clubId).orElseThrow(() -> new ClubNotFoundException(clubId));
-//        Athlete athlete = athleteRepository.findById(athleteId).orElseThrow(() -> new AthleteNotFoundException(athleteId));
-//        club.addMember(athlete);
-//        return clubRepository.save(club);
-//    }
 }
