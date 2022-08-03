@@ -7,9 +7,8 @@ import com.sportsapp.sportstrackingapp.models.Club;
 import com.sportsapp.sportstrackingapp.repositories.ClubRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClubService {
@@ -29,12 +28,9 @@ public class ClubService {
     public Collection<ClubDTO> getClubs() {
         Collection<Club> clubs = clubRepository.findAll();
 
-        List<ClubDTO> clubsDTO = new ArrayList<>();
-        for (Club club : clubs ) {
-            clubsDTO.add(clubMapper.INSTANCE.clubToClubDTO(club));
-        }
-
-        return clubsDTO;
+        return clubs.stream()
+                .map(ClubMapper.INSTANCE::clubToClubDTO)
+                .collect(Collectors.toList());
     }
 
     public ClubDTO getClub(Long id) throws ClubNotFoundException {

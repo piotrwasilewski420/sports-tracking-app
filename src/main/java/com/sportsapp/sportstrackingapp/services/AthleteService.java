@@ -11,9 +11,8 @@ import com.sportsapp.sportstrackingapp.repositories.ClubRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AthleteService {
@@ -35,12 +34,9 @@ public class AthleteService {
     public Collection<AthleteDTO> getAthletes() {
         Collection<Athlete> athletes = athleteRepository.findAll();
 
-        List<AthleteDTO> athletesDTO = new ArrayList<>();
-        for (Athlete athlete : athletes ) {
-            athletesDTO.add(athleteMapper.INSTANCE.athleteToAthleteDTO(athlete));
-        }
-
-        return athletesDTO;
+        return athletes.stream()
+                .map(AthleteMapper.INSTANCE::athleteToAthleteDTO)
+                .collect(Collectors.toList());
     }
 
     public AthleteDTO getAthlete(Long id) throws AthleteNotFoundException {
