@@ -1,11 +1,12 @@
 package com.sportsapp.sportstrackingapp.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collection;
+import java.sql.Timestamp;
+import java.util.List;
 
 @Getter @Setter @Entity
 @Table(name = "ACTIVITY")
@@ -14,14 +15,22 @@ public class Activity {
     @GeneratedValue
     private Long id;
 
-    @NotBlank(message = "Activity must have a type.")
-    private String type;
+    @NotNull(message = "Activity must have a type.")
+    @Enumerated(EnumType.STRING)
+    private Type type;
+
+//    @NotNull(message = "Activity must have a start time.")
+    private Timestamp startTime;
+
+//    @NotNull(message = "Activity must have an end time.")
+    private Timestamp endTime;
 
     @ManyToOne
     @JoinColumn(name = "athlete_id", insertable = false, updatable = false)
+    @NotNull
     private Athlete athlete;
 
     @OneToMany
     @JoinColumn(name = "activity_id")
-    private Collection<Comment> comments;
+    private List<Comment> comments;
 }

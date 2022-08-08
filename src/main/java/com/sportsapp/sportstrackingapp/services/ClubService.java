@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 @Service
 public class ClubService {
     private final ClubRepository clubRepository;
-
     private final ClubMapper clubMapper;
 
     public ClubService(ClubRepository clubRepository, ClubMapper clubMapper) {

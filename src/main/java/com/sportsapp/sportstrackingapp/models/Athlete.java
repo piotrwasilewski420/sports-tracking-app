@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Range;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter @Entity @RequiredArgsConstructor
@@ -43,7 +42,7 @@ public class Athlete {
 
     @OneToMany
     @JoinColumn(name = "ATHLETE_ID")
-    private List<Activity> activities = new ArrayList<>();
+    private List<Activity> activities;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -51,9 +50,13 @@ public class Athlete {
             joinColumns = @JoinColumn(name = "ATHLETE_ID"),
             inverseJoinColumns = @JoinColumn(name = "CLUB_ID")
     )
-    private List<Club> clubs = new ArrayList<>();
+    private List<Club> clubs;
 
     public void addClub(Club club) {
         clubs.add(club);
+    }
+
+    public void addActivity(Activity activity) {
+        activities.add(activity);
     }
 }

@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter @Entity
@@ -18,5 +17,5 @@ public class Club {
     private String name;
 
     @ManyToMany(mappedBy = "clubs", fetch = FetchType.LAZY)
-    private List<Athlete> members = new ArrayList<>();
+    private List<Athlete> members;
 }

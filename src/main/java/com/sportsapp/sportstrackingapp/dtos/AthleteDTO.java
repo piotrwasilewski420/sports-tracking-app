@@ -1,6 +1,5 @@
 package com.sportsapp.sportstrackingapp.dtos;
 
-import com.sportsapp.sportstrackingapp.models.Activity;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -18,6 +17,6 @@ public class AthleteDTO {
     private String sex;
     private Double weight;
     private Double height;
-    private ArrayList<Activity> activities;
+    private ArrayList<Long> activitiesIds;
     private ArrayList<Long> clubsIds;
 }

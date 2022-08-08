@@ -1,5 +1,6 @@
 package com.sportsapp.sportstrackingapp.exceptionHandlers;
 
+import com.sportsapp.sportstrackingapp.exceptions.ActivityNotFoundException;
 import com.sportsapp.sportstrackingapp.exceptions.AthleteNotFoundException;
 import com.sportsapp.sportstrackingapp.exceptions.ClubNotFoundException;
 import org.springframework.http.HttpHeaders;
@@ -33,6 +34,12 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler(value = { ClubNotFoundException.class })
     protected ResponseEntity<Object> handleClubNotFoundException(RuntimeException ex, WebRequest request) {
         String bodyOfResponse = "Club not found.";
+        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    }
+
+    @ExceptionHandler(value = { ActivityNotFoundException.class })
+    protected ResponseEntity<Object> handleActivityNotFoundException(RuntimeException ex, WebRequest request) {
+        String bodyOfResponse = "Activity not found.";
         return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 }

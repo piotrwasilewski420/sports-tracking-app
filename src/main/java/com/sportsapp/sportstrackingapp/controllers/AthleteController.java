@@ -1,6 +1,7 @@
 package com.sportsapp.sportstrackingapp.controllers;
 
 import com.sportsapp.sportstrackingapp.dtos.AthleteDTO;
+import com.sportsapp.sportstrackingapp.exceptions.ActivityNotFoundException;
 import com.sportsapp.sportstrackingapp.exceptions.AthleteNotFoundException;
 import com.sportsapp.sportstrackingapp.exceptions.ClubNotFoundException;
 import com.sportsapp.sportstrackingapp.models.Athlete;
@@ -36,10 +37,18 @@ public class AthleteController {
     }
 
     @PostMapping("/athletes/{athleteId}/clubs/{clubId}")
-    public ResponseEntity<Object> joinClub (
+    public ResponseEntity<Object> joinClub(
             @PathVariable Long athleteId,
             @PathVariable Long clubId) throws AthleteNotFoundException, ClubNotFoundException {
         athleteService.joinClub(athleteId, clubId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/athletes/{athleteId}/activities/{activityId}")
+    public ResponseEntity<Object> addActivity(
+            @PathVariable Long athleteId,
+            @PathVariable Long activityId) throws AthleteNotFoundException, ActivityNotFoundException {
+        athleteService.addActivity(athleteId, activityId);
         return ResponseEntity.ok().build();
     }
 }

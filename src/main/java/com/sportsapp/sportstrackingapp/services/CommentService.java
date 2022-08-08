@@ -1,8 +1,6 @@
 package com.sportsapp.sportstrackingapp.services;
 
-import com.sportsapp.sportstrackingapp.models.Club;
 import com.sportsapp.sportstrackingapp.models.Comment;
-import com.sportsapp.sportstrackingapp.repositories.ClubRepository;
 import com.sportsapp.sportstrackingapp.repositories.CommentRepository;
 import org.springframework.stereotype.Service;
 
