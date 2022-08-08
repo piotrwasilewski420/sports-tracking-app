@@ -40,10 +40,6 @@ public class Athlete {
 
     private Double height;
 
-    @OneToMany
-    @JoinColumn(name = "ATHLETE_ID")
-    private List<Activity> activities;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "MEMBERSHIP",
@@ -54,9 +50,5 @@ public class Athlete {
 
     public void addClub(Club club) {
         clubs.add(club);
-    }
-
-    public void addActivity(Activity activity) {
-        activities.add(activity);
     }
 }

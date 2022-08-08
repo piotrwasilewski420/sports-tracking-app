@@ -25,11 +25,6 @@ public class Activity {
 //    @NotNull(message = "Activity must have an end time.")
     private Timestamp endTime;
 
-    @ManyToOne
-    @JoinColumn(name = "athlete_id", insertable = false, updatable = false)
-    @NotNull
-    private Athlete athlete;
-
     @OneToMany
     @JoinColumn(name = "activity_id")
     private List<Comment> comments;
