@@ -15,6 +15,5 @@ public class ActivityDTO {
     private Type type;
     private Timestamp date_start;
     private Timestamp date_end;
-    private Long athleteId;
     private List<Comment> comments;
 }
